@@ -1,36 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JOptionPane;
-
 import modelo.ArbolBinarioBusqueda;
+import vista.A9EspejosVerificacionArboles;
 import vista.ArbolVistaPrincipal;
 
 /**
- *
  * @author alfar
  */
 public class ControladorArbolBinarioBusqueda implements ActionListener {
 
+    // Componentes principales
     private ArbolVistaPrincipal vista;
     private ArbolBinarioBusqueda<Integer> modelo;
+
+    // COMPONENTES ADICIONALES PARA EL APARTADO 9 (Declaración que faltaba)
+    private A9EspejosVerificacionArboles vistaEspejos;
+    private ArbolBinarioBusqueda<Integer> arbolA;
+    private ArbolBinarioBusqueda<Integer> arbolB;
 
     public ControladorArbolBinarioBusqueda(ArbolVistaPrincipal vista, ArbolBinarioBusqueda<Integer> modelo) {
         this.vista = vista;
         this.modelo = modelo;
 
+        // Enlazar componentes de la vista principal
         this.vista.getBtnIngresarDatos().addActionListener(this);
         this.vista.getBtnLimpiar().addActionListener(this);
-        this.vista.btnArbolEspejo.addActionListener(this);
-        this.vista.btnArbolLleno.addActionListener(this);
-        this.vista.btnArbolLleno.addActionListener(this);
-
+        this.vista.getBtnSonEspejo().addActionListener(this); // Asegúrate de tener este Getter en tu vista principal
+        this.vista.getBtnArbolEspejo().addActionListener(this);
+        this.vista.getBtnArbolLleno().addActionListener(this);
     }
 
     @Override
@@ -53,18 +53,74 @@ public class ControladorArbolBinarioBusqueda implements ActionListener {
             }
         }
 
-        // Acción al dar click en LIMPIAR
-        if (e.getSource() == vista.getjButton1()) {
+        // Acción al dar click en LIMPIAR (Corregido de getjButton1 a getBtnLimpiar)
+        if (e.getSource() == vista.getBtnLimpiar()) {
             modelo = new ArbolBinarioBusqueda<>(); // Resetea el árbol
             limpiarControles();
         }
 
-        // Acción: 9. SON ESPEJO
+        // ABRE LA NUEVA INTERFAZ DEL APARTADO 9 (Corregido el acceso estático erróneo)
         if (e.getSource() == vista.getBtnSonEspejo()) {
-            // Ejemplo de validación local (compara el árbol consigo mismo)
-            boolean esEspejoConSiMismo = modelo.sonEspejos(modelo.getRaiz(), modelo.getRaiz());
-            JOptionPane.showMessageDialog(vista,
-                    "¿El árbol actual es espejo de sí mismo?: " + (esEspejoConSiMismo ? "SÍ" : "NO"));
+            if (vistaEspejos == null) {
+                vistaEspejos = new A9EspejosVerificacionArboles();
+                arbolA = new ArbolBinarioBusqueda<>();
+                arbolB = new ArbolBinarioBusqueda<>();
+
+                // Enlazar los botones de la nueva ventana al controlador
+                vistaEspejos.getBtnAgregar().addActionListener(this);
+                vistaEspejos.getBtnLimpiar().addActionListener(this);
+                vistaEspejos.getBtnCompararArboles().addActionListener(this);
+                vistaEspejos.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+            }
+            vistaEspejos.setLocationRelativeTo(vista);
+            vistaEspejos.setVisible(true);
+        }
+
+        // --- EVENTOS DE LA VISTA 9 (ESPEJOS) ---
+        if (vistaEspejos != null) {
+            if (e.getSource() == vistaEspejos.getBtnAgregar()) {
+                // Agregar al Árbol A si hay texto
+                if (!vistaEspejos.getTxtDatosArbolA().getText().trim().isEmpty()) {
+                    try {
+                        int valA = Integer.parseInt(vistaEspejos.getTxtDatosArbolA().getText().trim());
+                        arbolA.insertar(valA);
+                        vistaEspejos.getTxtDatosArbolA().setText("");
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(vistaEspejos, "Dato inválido en Árbol A.");
+                    }
+                }
+                // Agregar al Árbol B si hay texto
+                if (!vistaEspejos.getTxtDatosArbolB().getText().trim().isEmpty()) {
+                    try {
+                        int valB = Integer.parseInt(vistaEspejos.getTxtDatosArbolB().getText().trim());
+                        arbolB.insertarInverso(valB); // <--- CAMBIADO AQUÍ
+                        vistaEspejos.getTxtDatosArbolB().setText("");
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(vistaEspejos, "Dato inválido en Árbol B.");
+                    }
+                }
+                vistaEspejos.getTxtListaArbolA().setText(arbolA.IND().toString());
+                vistaEspejos.getTxtListaArbolB().setText(arbolB.IND().toString());
+            }
+
+            if (e.getSource() == vistaEspejos.getBtnCompararArboles()) {
+                // Compara la raíz de arbolA con la raíz de arbolB usando la lógica del modelo
+                boolean resultado = modelo.sonEspejos(arbolA.getRaiz(), arbolB.getRaiz());
+                if (resultado) {
+                    JOptionPane.showMessageDialog(vistaEspejos, "¡LOS ÁRBOLES SON ESPEJOS!");
+                } else {
+                    JOptionPane.showMessageDialog(vistaEspejos, "LOS ÁRBOLES NO SON ESPEJOS.");
+                }
+            }
+
+            if (e.getSource() == vistaEspejos.getBtnLimpiar()) {
+                arbolA = new ArbolBinarioBusqueda<>();
+                arbolB = new ArbolBinarioBusqueda<>();
+                vistaEspejos.getTxtDatosArbolA().setText("");
+                vistaEspejos.getTxtDatosArbolB().setText("");
+                vistaEspejos.getTxtListaArbolA().setText("");
+                vistaEspejos.getTxtListaArbolB().setText("");
+            }
         }
 
         // Acción: 10. ARBOL ESPEJO
@@ -87,40 +143,26 @@ public class ControladorArbolBinarioBusqueda implements ActionListener {
     }
 
     private void actualizarCampos() {
-        // Muestra la lista de elementos en el campo grande (usando el recorrido
-        // InOrden)
+        // Corregido: Uso de las variables locales correctas (vista y modelo)
         vista.getjTextField1().setText(modelo.IND().toString());
-
-        // 1. Peso del árbol
         vista.getTxtPeso().setText(String.valueOf(modelo.calcularPeso()));
 
-        // 2. Nodos con dos hijos
+        // Apartado 2 Corregido
         vista.getTxtNodosDosHijos().setText(modelo.obtenerNodosDosHijosStr());
 
-        // 3. Valor Máximo
         Object max = modelo.encontrarMaximo();
         vista.getTxtValorMaximo().setText(max != null ? max.toString() : "");
 
-        // 4. Valor Mínimo
         Object min = modelo.encontrarMinimo();
         vista.getTxtValorMinimo().setText(min != null ? min.toString() : "");
 
-        // 5. Sumatoria rama derecha
         vista.getTxtSumatoria().setText(String.valueOf(modelo.sumarRamaDerecha()));
-
-        // 6. Total Impares
         vista.getTxtImpares().setText(String.valueOf(modelo.contarImpares()));
-
-        // 8. Recorrido por Niveles
         vista.getTxtNodosNivel().setText(modelo.obtenerNodosPorNivelStr());
-
-        // 12. Longitud
         vista.getTxtLongitud().setText(String.valueOf(modelo.encontrarLongitud()));
 
-        // 13. Rama más larga
-        // Redirigimos temporalmente la consola o acumulamos los valores para mostrarlos
-        // limpios
-        vista.getTxtNodosRamaLarga().setText("Revisar consola o calcular ruta...");
+        // Apartado 13 Resuelto dinámicamente
+        vista.getTxtNodosRamaLarga().setText(modelo.obtenerRamaMasLargaStr());
     }
 
     private void limpiarControles() {
@@ -136,5 +178,4 @@ public class ControladorArbolBinarioBusqueda implements ActionListener {
         vista.getTxtLongitud().setText("");
         vista.getTxtNodosRamaLarga().setText("");
     }
-
 }

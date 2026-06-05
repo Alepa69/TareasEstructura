@@ -4,6 +4,11 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author PC
@@ -185,6 +190,64 @@ public class A9EspejosVerificacionArboles extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public JButton getBtnCompararArboles() {
+        return btnCompararArboles;
+    }
+
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JTextField getTxtDatosArbolA() {
+        return txtDatosArbolA;
+    }
+
+    public JTextField getTxtDatosArbolB() {
+        return txtDatosArbolB;
+    }
+
+    public JTextField getTxtListaArbolA() {
+        return txtListaArbolA;
+    }
+
+    public JTextField getTxtListaArbolB() {
+        return txtListaArbolB;
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCompararArboles;

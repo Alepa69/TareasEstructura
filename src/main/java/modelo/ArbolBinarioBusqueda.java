@@ -296,26 +296,25 @@ public class ArbolBinarioBusqueda<T> extends ArbolBinario {
     // =========================================================================
     // 13. MOSTRAR NODOS EN LA RAMA MÁS LARGA
     // =========================================================================
-    public void mostrarRamaMasLarga() {
-        System.out.println("Nodos en la rama más larga:");
-        mostrarRamaMasLarga(super.getRaiz());
-        System.out.println();
+    public String obtenerRamaMasLargaStr() {
+        if (super.isEmpty())
+            return "";
+        StringBuilder sb = new StringBuilder();
+        obtenerRamaMasLargaStr(super.getRaiz(), sb);
+        String res = sb.toString().trim();
+        return res.replace(" ", " -> ");
     }
 
-    private void mostrarRamaMasLarga(Nodo r) {
+    private void obtenerRamaMasLargaStr(Nodo r, StringBuilder sb) {
         if (r == null)
             return;
-
-        System.out.print(r.getDato() + " ");
-
-        // Comparamos las alturas de los subárboles para decidir por qué camino ir
+        sb.append(r.getDato()).append(" ");
         int altIzq = obtenerAltura(r.getRamaIzq());
         int altDrch = obtenerAltura(r.getRamaDrch());
-
         if (altIzq >= altDrch) {
-            mostrarRamaMasLarga(r.getRamaIzq());
+            obtenerRamaMasLargaStr(r.getRamaIzq(), sb);
         } else {
-            mostrarRamaMasLarga(r.getRamaDrch());
+            obtenerRamaMasLargaStr(r.getRamaDrch(), sb);
         }
     }
 
@@ -384,19 +383,26 @@ public class ArbolBinarioBusqueda<T> extends ArbolBinario {
     // EXTRA: Método auxiliar para retornar los Nodos de dos hijos como String
     // =========================================================================
     public String obtenerNodosDosHijosStr() {
+        if (super.isEmpty())
+            return "";
         StringBuilder sb = new StringBuilder();
         obtenerNodosDosHijosStr(super.getRaiz(), sb);
-        return sb.toString().trim().replace(" ", ", ");
+        String res = sb.toString().trim();
+        return res.isEmpty() ? "Ninguno" : res.replace(" ", ", ");
     }
 
     private void obtenerNodosDosHijosStr(Nodo r, StringBuilder sb) {
-        if (r != null) {
-            if (r.getRamaIzq() != null && r.getRamaDrch() != null) {
-                sb.append(r.getDato()).append(" ");
-            }
-            obtenerNodosDosHijosStr(r.getRamaIzq(), sb);
-            obtenerNodosDosHijosStr(r.getRamaDrch(), sb);
+        if (r == null)
+            return;
+
+        // Si el nodo tiene ambos hijos, lo agregamos al StringBuilder
+        if (r.getRamaIzq() != null && r.getRamaDrch() != null) {
+            sb.append(r.getDato()).append(" ");
         }
+
+        // Seguimos recorriendo el árbol de forma recursiva
+        obtenerNodosDosHijosStr(r.getRamaIzq(), sb);
+        obtenerNodosDosHijosStr(r.getRamaDrch(), sb);
     }
 
     // =========================================================================
@@ -420,6 +426,32 @@ public class ArbolBinarioBusqueda<T> extends ArbolBinario {
         if (sb.length() > 0)
             sb.setLength(sb.length() - 2); // Quitar última coma
         return sb.toString();
+    }
+
+    public void insertarInverso(T clave) {
+        Nodo nuevo = new Nodo(clave);
+        if (super.getRaiz() == null) {
+            super.setRaiz(nuevo);
+        } else {
+            insertarInverso(super.getRaiz(), nuevo);
+        }
+    }
+
+    private void insertarInverso(Nodo pad, Nodo nue) {
+        // Lógica invertida: Si es menor o igual, va a la DERECHA
+        if (((Comparable) nue.getDato()).compareTo(pad.getDato()) <= 0) {
+            if (pad.getRamaDrch() == null) {
+                pad.setRamaDrch(nue);
+            } else {
+                insertarInverso(pad.getRamaDrch(), nue);
+            }
+        } else { // Si es mayor, va a la IZQUIERDA
+            if (pad.getRamaIzq() == null) {
+                pad.setRamaIzq(nue);
+            } else {
+                insertarInverso(pad.getRamaIzq(), nue);
+            }
+        }
     }
 
 }
