@@ -32,7 +32,7 @@ public class A11LlenoVerificacionArboles extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtHojasAlMismoNivel = new javax.swing.JTextField();
         txtNodosHijos = new javax.swing.JTextField();
-        jlVerificacionLLeno = new javax.swing.JLabel();
+        jlabelVerificacionLleno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,8 +62,8 @@ public class A11LlenoVerificacionArboles extends javax.swing.JFrame {
 
         jLabel3.setText("HOJAS AL MISMO NIVEL: ");
 
-        jlVerificacionLLeno.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jlVerificacionLLeno.setText("NO ESTA LLENO");
+        jlabelVerificacionLleno.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jlabelVerificacionLleno.setText("NO ESTA LLENO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,7 +82,7 @@ public class A11LlenoVerificacionArboles extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlVerificacionLLeno)
+                .addComponent(jlabelVerificacionLleno)
                 .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
@@ -98,7 +98,7 @@ public class A11LlenoVerificacionArboles extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtHojasAlMismoNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jlVerificacionLLeno, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                .addComponent(jlabelVerificacionLleno, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
 
@@ -145,8 +145,8 @@ public class A11LlenoVerificacionArboles extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel jlVerificacionLLeno;
-    private javax.swing.JTextField txtHojasAlMismoNivel;
-    private javax.swing.JTextField txtNodosHijos;
+    private javax.swing.JLabel jlabelVerificacionLleno;
+    public javax.swing.JTextField txtHojasAlMismoNivel;
+    public javax.swing.JTextField txtNodosHijos;
     // End of variables declaration//GEN-END:variables
 }

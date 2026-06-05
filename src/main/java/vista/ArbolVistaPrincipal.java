@@ -4,6 +4,11 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author PC
@@ -30,7 +35,7 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtDatosArbol = new javax.swing.JTextField();
         btnIngresarDatos = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         txtPeso = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtNodosDosHijos = new javax.swing.JTextField();
@@ -47,11 +52,11 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtNodosNivel = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnSonEspejo = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        btnArbolEspejo = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnArbolLleno = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         txtLongitud = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -67,7 +72,7 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
 
         btnIngresarDatos.setText("INGRESAR");
 
-        jButton1.setText("LIMPIAR");
+        btnLimpiar.setText("LIMPIAR");
 
         jLabel4.setText("2. NODO DOS HIJOS");
 
@@ -85,15 +90,20 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
 
         jLabel11.setText("9. SON ESPEJO");
 
-        jButton2.setText("INGRESAR");
+        btnSonEspejo.setText("INGRESAR");
 
         jLabel12.setText("10. ARBOL ESPEJO");
 
-        jButton3.setText("INGRESAR");
+        btnArbolEspejo.setText("INGRESAR");
 
         jLabel13.setText("11. ARBOL LLENO");
 
-        jButton4.setText("INGRESAR");
+        btnArbolLleno.setText("INGRESAR");
+        btnArbolLleno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnArbolLlenoActionPerformed(evt);
+            }
+        });
 
         jLabel14.setText("12. LONGITUD");
 
@@ -108,10 +118,10 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(141, 141, 141)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,13 +141,13 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2))
+                            .addComponent(btnSonEspejo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(93, 93, 93)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel12)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnArbolEspejo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnArbolLleno, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel13)
                         .addGroup(layout.createSequentialGroup()
@@ -154,19 +164,21 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
                                     .addComponent(txtSumatoria, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(txtNodosNivel))
                             .addGap(78, 78, 78)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtValorMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtImpares, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtValorMaximo, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                .addComponent(txtImpares, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
                                 .addComponent(jLabel14)
-                                .addComponent(txtLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(txtLongitud, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(jLabel10)
                     .addComponent(jLabel15)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(48, 48, 48)
+                                .addComponent(jLabel9)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -176,12 +188,12 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
                                     .addComponent(jTextField1))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnIngresarDatos, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
                             .addComponent(txtNodosDosHijos, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)))
                     .addComponent(txtNodosRamaLarga))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -193,62 +205,66 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtDatosArbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnIngresarDatos))
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jLabel9))
-                .addGap(35, 35, 35)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpiar))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNodosDosHijos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtValorMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtPeso, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(txtNodosDosHijos)
+                    .addComponent(txtValorMaximo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtValorMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtImpares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSumatoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtValorMinimo, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(txtSumatoria)
+                    .addComponent(txtImpares))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNodosNivel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLongitud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtLongitud, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(txtNodosNivel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNodosRamaLarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addComponent(txtNodosRamaLarga, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2))
+                        .addComponent(btnSonEspejo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnArbolEspejo)
+                            .addComponent(btnArbolLleno))))
                 .addGap(28, 28, 28))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnArbolLlenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArbolLlenoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnArbolLlenoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -285,12 +301,147 @@ public class ArbolVistaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtnLimpiar() {
+        return btnLimpiar;
+    }
+    
+    
+    public JButton getBtnArbolEspejo() {
+        return btnArbolEspejo;
+    }
+
+    public JButton getBtnArbolLleno() {
+        return btnArbolLleno;
+    }
+
+    public JButton getBtnIngresarDatos() {
+        return btnIngresarDatos;
+    }
+
+    public JButton getBtnSonEspejo() {
+        return btnSonEspejo;
+    }
+
+    public JButton getjButton1() {
+        return btnLimpiar;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel10() {
+        return jLabel10;
+    }
+
+    public JLabel getjLabel11() {
+        return jLabel11;
+    }
+
+    public JLabel getjLabel12() {
+        return jLabel12;
+    }
+
+    public JLabel getjLabel13() {
+        return jLabel13;
+    }
+
+    public JLabel getjLabel14() {
+        return jLabel14;
+    }
+
+    public JLabel getjLabel15() {
+        return jLabel15;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public JLabel getjLabel7() {
+        return jLabel7;
+    }
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public JLabel getjLabel9() {
+        return jLabel9;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public JTextField getjTextField1() {
+        return jTextField1;
+    }
+
+    public JTextField getTxtDatosArbol() {
+        return txtDatosArbol;
+    }
+
+    public JTextField getTxtImpares() {
+        return txtImpares;
+    }
+
+    public JTextField getTxtLongitud() {
+        return txtLongitud;
+    }
+
+    public JTextField getTxtNodosDosHijos() {
+        return txtNodosDosHijos;
+    }
+
+    public JTextField getTxtNodosNivel() {
+        return txtNodosNivel;
+    }
+
+    public JTextField getTxtNodosRamaLarga() {
+        return txtNodosRamaLarga;
+    }
+
+    public JTextField getTxtPeso() {
+        return txtPeso;
+    }
+
+    public JTextField getTxtSumatoria() {
+        return txtSumatoria;
+    }
+
+    public JTextField getTxtValorMaximo() {
+        return txtValorMaximo;
+    }
+
+    public JTextField getTxtValorMinimo() {
+        return txtValorMinimo;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnArbolEspejo;
+    public javax.swing.JButton btnArbolLleno;
     public javax.swing.JButton btnIngresarDatos;
-    public javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    public javax.swing.JButton btnLimpiar;
+    public javax.swing.JButton btnSonEspejo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -39,7 +39,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jlVerificacionLLeno" min="-2" max="-2" attributes="0"/>
+              <Component id="jlabelVerificacionLleno" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -59,7 +59,7 @@
                   <Component id="txtHojasAlMismoNivel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="jlVerificacionLLeno" pref="31" max="32767" attributes="0"/>
+              <Component id="jlabelVerificacionLleno" pref="31" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -115,10 +115,16 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtHojasAlMismoNivel">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNodosHijos">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlVerificacionLLeno">
+    <Component class="javax.swing.JLabel" name="jlabelVerificacionLleno">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="18" style="1"/>
