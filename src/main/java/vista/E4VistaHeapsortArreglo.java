@@ -147,15 +147,15 @@ public class E4VistaHeapsortArreglo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnAgregar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea txtAreaAntes;
-    private javax.swing.JTextArea txtAreaDespues;
-    private javax.swing.JTextField txtDatos;
+    public javax.swing.JTextArea txtAreaAntes;
+    public javax.swing.JTextArea txtAreaDespues;
+    public javax.swing.JTextField txtDatos;
     // End of variables declaration//GEN-END:variables
 }

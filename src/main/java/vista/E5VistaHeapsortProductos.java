@@ -4,6 +4,14 @@
  */
 package vista;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author PC
@@ -30,14 +38,14 @@ public class E5VistaHeapsortProductos extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCategoriaProducto = new javax.swing.JTextField();
         ttxtNombreProducto = new javax.swing.JTextField();
         txtCodigoProducto = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProductos = new javax.swing.JTable();
         btnAscendente = new javax.swing.JButton();
         btnDescendente = new javax.swing.JButton();
+        cbxCategoria = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,7 +58,7 @@ public class E5VistaHeapsortProductos extends javax.swing.JFrame {
 
         btnAgregar.setText("Agregar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -61,7 +69,7 @@ public class E5VistaHeapsortProductos extends javax.swing.JFrame {
                 "Codigo", "Nombre", "Categoria"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblProductos);
 
         btnAscendente.setText("Ascendente");
         btnAscendente.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +79,8 @@ public class E5VistaHeapsortProductos extends javax.swing.JFrame {
         });
 
         btnDescendente.setText("Descendente");
+
+        cbxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -87,9 +97,9 @@ public class E5VistaHeapsortProductos extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCategoriaProducto)
                             .addComponent(ttxtNombreProducto)
-                            .addComponent(txtCodigoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                            .addComponent(txtCodigoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                            .addComponent(cbxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
                         .addGap(17, 17, 17))
@@ -116,15 +126,15 @@ public class E5VistaHeapsortProductos extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtCategoriaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar))
+                    .addComponent(btnAgregar)
+                    .addComponent(cbxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAscendente)
                     .addComponent(btnDescendente))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -140,7 +150,7 @@ public class E5VistaHeapsortProductos extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 269, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -150,7 +160,7 @@ public class E5VistaHeapsortProductos extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -196,19 +206,73 @@ public class E5VistaHeapsortProductos extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBtnAgregar() {
+        return btnAgregar;
+    }
+
+    public JButton getBtnAscendente() {
+        return btnAscendente;
+    }
+
+    public JButton getBtnDescendente() {
+        return btnDescendente;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JTable getTblProductos() {
+        return tblProductos;
+    }
+
+    public JTextField getTtxtNombreProducto() {
+        return ttxtNombreProducto;
+    }
+
+    public JComboBox<String> getCbxCategoria() {
+        return cbxCategoria;
+    }
+    
+    public JTextField getTxtCodigoProducto() {
+        return txtCodigoProducto;
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnAscendente;
-    private javax.swing.JButton btnDescendente;
+    public javax.swing.JButton btnAgregar;
+    public javax.swing.JButton btnAscendente;
+    public javax.swing.JButton btnDescendente;
+    public javax.swing.JComboBox<String> cbxCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField ttxtNombreProducto;
-    private javax.swing.JTextField txtCategoriaProducto;
-    private javax.swing.JTextField txtCodigoProducto;
+    public javax.swing.JTable tblProductos;
+    public javax.swing.JTextField ttxtNombreProducto;
+    public javax.swing.JTextField txtCodigoProducto;
     // End of variables declaration//GEN-END:variables
 }
