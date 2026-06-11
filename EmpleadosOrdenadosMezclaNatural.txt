@@ -1,0 +1,10 @@
+4,05678901-2,Jose Garcia,7777-5555,jose@empresa.com,Auxiliar,2023-06-30,550.0
+10,00123456-7,Patricia Vargas,7777-0000,patricia@empresa.com,Asistente,2022-07-25,600.0
+2,04567890-1,Maria Cruz,7777-4444,maria@empresa.com,Secretaria,2022-01-12,650.0
+6,07890123-4,Pedro Diaz,7777-7777,pedro@empresa.com,Vendedor,2020-11-20,750.25
+5,03456789-0,Luis Reyes,7777-3333,luis@empresa.com,Analista,2019-08-22,900.75
+8,08901234-5,Elena Castro,7777-8888,elena@empresa.com,Programadora,2021-09-14,1100.0
+3,02345678-9,Ana Lopez,7777-2222,ana@empresa.com,Contadora,2021-03-15,1200.5
+1,01234567-8,Carlos Mendez,7777-1111,carlos@empresa.com,Gerente,2020-05-10,1500.0
+7,06789012-3,Sofia Ramos,7777-6666,sofia@empresa.com,JefaRRHH,2018-04-05,1800.0
+9,09012345-6,Roberto Hernandez,7777-9999,roberto@empresa.com,Director,2017-02-18,2500.0

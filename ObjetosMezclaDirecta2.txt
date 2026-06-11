@@ -1,0 +1,2 @@
+Fifi,1,Rotwailer
+Max,32,Pitbull
